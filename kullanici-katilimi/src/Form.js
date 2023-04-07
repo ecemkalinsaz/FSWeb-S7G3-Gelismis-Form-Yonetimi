@@ -3,7 +3,7 @@ import axios from "axios";
 import * as yup from "yup";
 
 
-const emptyForm = {
+const kullanıcılar = {
     name: "",
     email: "",
     pass: "",
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 });
 
 export default function Form(props) {
-    const [formData, setFormData] = useState(emptyForm);
+    const [formData, setFormData] = useState(kullanıcılar);
     const [hataMesaji, setHataMesaji] = useState('')
 
      async function submitHandler(e) {
@@ -35,7 +35,7 @@ export default function Form(props) {
             .post("https://reqres.in/api/users", formData)
             .then(function (response) {
                 props.addUye(response.data);
-                setFormData(emptyForm);
+                setFormData(kullanıcılar);
             })
             .catch(function (error) {
                 console.log(error);
